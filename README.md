@@ -21,7 +21,17 @@ Une fois le jeu lancer plusieurs choix nous sont proposés :
 2. Le nombre de symboles qu'un joueur doit alignée pour remporter la partie.
 3. Le nombre de partie jouée au total avec ces deux même joueurs.
 
-Ensuite, la grille est affichée et le jeu commence. Les joueurs selectionnent les cases où ils souhaitent placer leurs symboles
+Ensuite, la grille est affichée et le jeu commence.
+Les joueurs selectionnent les cases où ils souhaitent placer leurs symboles
 ***
 
 ## Les règles du jeu
+Le Morpion se joue à 2 joueurs.
+
+Les 2 joueurs ont chacun un symbole entre X et O.
+
+Le but d'un joueur est d'aligner un certain nombre de son symbole horizontalement, verticalement ou diagonalement. Ce nombre à été prédefini par les joueurs en début de partie. 
+
+La partie se termine à deux conditions : 
+1. Soit l'un des joueurs a reussi à faire un alignement, il gagne la partie.
+2. Soit lorsque la grille est totalemet remplie, c'est un match nul. 
