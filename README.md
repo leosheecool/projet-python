@@ -37,4 +37,4 @@ La partie se termine si l'une des deux conditions suivantes est respectées :
 2. Soit lorsque la grille est totalemet remplie, c'est un match nul. 
 
 ## Les auteurs
-Ce jeu a été crée par Marie Gabillault et Salimatou Traore
+Ce jeu a été crée par Marie Gabillault et Salimatou Traore.
