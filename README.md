@@ -1,6 +1,6 @@
 # PROJET : LE MORPION : «Multi-variable»
 
-**Le but de notre projet est de créer un jeu du morpion variable en tous points c'est-à-dire sur la taille de la grille ainsi que sur le nombre de symboles à alignées**
+**Le but de notre projet est de créer un jeu du morpion variable en tous points sur la taille de la grille ainsi que sur le nombre de symboles à alignées**
 ***
 
 ## L'installation
