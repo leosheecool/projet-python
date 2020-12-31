@@ -32,6 +32,6 @@ Les 2 joueurs ont chacun un symbole entre X et O.
 
 Le but d'un joueur est d'aligner un certain nombre de son symbole horizontalement, verticalement ou diagonalement. Ce nombre à été prédefini par les joueurs en début de partie. 
 
-La partie se termine à deux conditions : 
+La partie se termine si l'une des deux conditions suivantes est : 
 1. Soit l'un des joueurs a reussi à faire un alignement, il gagne la partie.
 2. Soit lorsque la grille est totalemet remplie, c'est un match nul. 
