@@ -19,4 +19,4 @@ Une fois l'installation du programme effectué ainsi que le programme ouvert sur
 
 ***
 
-## Les règles du jeu# projet-python
+## Les règles du jeu
