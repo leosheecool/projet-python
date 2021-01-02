@@ -4,4 +4,4 @@
 
 
 
-![Organigramme](https://github.com/salimatoutraore/projet-python/blob/main/organigramme.png)
+![Organigramme](https://github.com/salimatoutraore/projet-python/blob/main/lorganigramme.png)
