@@ -7,7 +7,7 @@ L'organisation de notre code est representé ici de manière schématique à l'a
 ![Organigramme](https://github.com/salimatoutraore/projet-python/blob/main/lorganigramme.png "Organigramme")
 
 
-## Explications de chaques fonctions
+## Explications de chacune des fonctions
 
 Le jeu demarre grâce aux lignes de codes suivantes :
 
@@ -29,6 +29,8 @@ if __name__ == '__main__':
     jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer)
 ```
 
+***
+
 1. Étape 1 : L'initialisation du jeu
 
 L'initiation du jeu se fait à l'aide de l'utilisateur, en lui demandant la taille de la grille, le nombre de symbole à aligner ainsi que le nombre de partie à jouer : 
@@ -39,6 +41,8 @@ taille_reel_grille = imax**2 #taille 2D de la grille
 alig=int(input('Difficulté : Choisi un nombre de symbole à aligner dans la grille : ')) 
 nombre_partie_a_jouer=int(input('Combien de partie voulez vous jouer ? : '))
 ```
+
+***
 
 2. Étape 2 : Le début du jeu
 
@@ -68,6 +72,8 @@ Nous avons tout d'abord une boucle for qui permet de jouer un nombre précis de 
 
 Ensuite, nous faisons appelle aux autres fonctions du jeu : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7),    
 
+***
+
 3. Étape 3 : La construction de la grille initiale
 
 ```python
@@ -87,6 +93,7 @@ def contruction_grille(imax): #Permet de créer la grille initiale du jeu en uti
 
 ```
 
+***
 
 4. Étape 4 : La fonction ``` verification ```
 
@@ -101,6 +108,8 @@ def verification(grille,alig,imax,L): # Permet de vérifier si il y a des cases 
     
 ```    
 
+***
+
 5. Étape 5 : Le joueur choisit sa case
 
 ```python
@@ -113,6 +122,8 @@ y=(case_choisie-1) %imax
 x=int((case_choisie-1)/imax)
 jouer(grille,x,y,imax,taille_reel_grille,L)
 ```
+
+***
 
 6. Étape 6 : La fonction ```jouer```
 
@@ -132,6 +143,8 @@ def jouer(grille,x,y,imax,taille_reel_grille,L):
     return 1
     
 ```    
+
+***
 
 7. Étape 7 : La fonction ```verification_victoire```
 
@@ -181,7 +194,6 @@ def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a
         else:
             ccx=0
             cco=0
-
 
 
 
@@ -278,6 +290,7 @@ def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a
     
 ``` 
 
+***
 
 8. Étape 8 : Le resultat du jeu
 
@@ -288,3 +301,5 @@ def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a
     print("Le joueur O à gagné : "+str(compteur_o)+" fois")   
 
 ``` 
+
+***
