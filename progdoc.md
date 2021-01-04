@@ -88,8 +88,203 @@ def contruction_grille(imax): #Permet de créer la grille initiale du jeu en uti
 ```
 
 
-4. Étape 4 : 
-5. Étape 5 : 
-6. Étape 6 : 
-7. Étape 7 : 
-8. Étape 8 : 
+4. Étape 4 : La fonction ``` verification ```
+
+```python
+
+def verification(grille,alig,imax,L): # Permet de vérifier si il y a des cases vides restantes dans la grille de jeu        
+    for i in range(0,imax):
+        for j in range(0,imax):
+            if(grille[i][j] in L):
+                return 1
+    return 0
+    
+```    
+
+5. Étape 5 : Le joueur choisit sa case
+
+```python
+case_choisie=int(input('Joueur '+symb+' choisi une position dans la grille entre 1 et '+str((taille_reel_grille))+' : '))
+if(not(0<case_choisie<taille_reel_grille+1)):
+    print("Cette case n'est pas dans la grille ! Choisi-en une autre !")
+    continue
+
+y=(case_choisie-1) %imax
+x=int((case_choisie-1)/imax)
+jouer(grille,x,y,imax,taille_reel_grille,L)
+```
+
+6. Étape 6 : La fonction ```jouer```
+
+```python
+
+def jouer(grille,x,y,imax,taille_reel_grille,L):
+    global symb
+    if (grille[x][y] in L):
+        grille[x][y]=symb
+        symb='X' if symb=='O' else 'O' #symbole dépend du précedent
+        
+        print('-----'*imax)
+        for i in range(0,imax):
+            print(grille[i])
+            print('-----'*imax)
+        
+    return 1
+    
+```    
+
+7. Étape 7 : La fonction ```verification_victoire```
+
+```python
+def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a victoire de l'un des joueurs
+    
+    global compteur_o,compteur_x #Compteurs qui  permet de compter les victoires des joueurs X et O
+    
+    clx, clo, ccx, cco, cd1x, cd1o, cd2x, cd2o = 0, 0, 0, 0, 0, 0, 0, 0 #Compteurs qui permet de compter les symboles X et O sur les lignes, colonnes et diagonales
+
+      
+    ligne=grille #listes des lignes
+    for j in range(len(ligne)):
+        for i in range(len(ligne)-1):
+            if ligne[j][i]==ligne[j][i+1] and ligne[j][i]=="X":
+                clx+=1
+            if ligne[i][j]==ligne[i+1][j] and ligne[i][j]=="O":
+                clo+=1
+        if clx==alig-1:
+            print('X à gagné')
+            compteur_x+=1
+            return 0
+        elif clo==alig-1:
+            print('O à gané')
+            compteur_o+=1
+            return 0
+        else:
+            clx=0
+            clo=0
+
+
+    colonnes=[[grille[i][j] for i in range(imax)] for j in range(imax)] #listes des colonnes
+    for j in range(len(colonnes)):
+        for i in range(len(colonnes)-1):
+            if colonnes[j][i]==colonnes[j][i+1] and colonnes[j][i]=="X":
+                ccx+=1
+            if colonnes[i][j]==colonnes[i+1][j] and colonnes[i][j]=="O":
+                cco+=1
+        if ccx==alig-1:
+            print('X à gagné')
+            compteur_x+=1
+            return 0
+        elif cco==alig-1:
+            print('O à gané')
+            compteur_o+=1
+            return 0
+        else:
+            ccx=0
+            cco=0
+
+
+
+
+
+    h, w = imax, imax 
+        
+    liste_diagonales1=[[grille[h-1-q][p-q] for q in range(min(p, h-1), max(0, p-w+1)-1, -1)] for p in range(h+w-1)] #création d'une liste contenant liste des diagonales
+
+    for diagonale in liste_diagonales1:
+        if len(diagonale) == alig:
+            unique_element = set(diagonale)
+            if len(unique_element) == 1:
+                elem_in_set = unique_element.pop()
+                if elem_in_set=='X':
+                    print("X a gagné")
+                    compteur_x+=1
+                    return 0
+                if elem_in_set=='O':
+                    print("O a gagné")
+                    compteur_o+=1
+                    return 0
+                
+        if len(diagonale) > alig:
+            for i in range(len(diagonale)-2):
+
+                if diagonale[i]=='X':
+                    cd1x+=1
+                if diagonale[i]=='O':
+                    cd1o+=1
+
+                if diagonale[i]==diagonale[i+1] and diagonale[i]=='X':
+                    cd1x+=1
+                if diagonale[i]==diagonale[i+1] and diagonale[i]=='O':
+                    cd1o+=1
+
+
+            if cd1x==alig:
+                print("X a gagné")
+                compteur_x+=1
+                return 0
+            elif cd1o==alig:
+                print("O a gagné")
+                compteur_o+=1
+                return 0
+            else:
+                cd1o=0
+                cd1x=0
+
+
+
+    liste_diagonales2=[[grille[p - q][q] for q in range(max(p-h+1,0), min(p+1, w))] for p in range(h + w - 1)] #création d'une liste contenant liste des diagonales 
+
+    for diagonale in liste_diagonales2:
+        if len(diagonale) == alig:
+            unique_element = set(diagonale)
+            if len(unique_element) == 1:
+                elem_in_set = unique_element.pop()
+                if elem_in_set=='X':
+                    print("X a gagné")
+                    compteur_x+=1
+                    return 0
+                if elem_in_set=='O':
+                    print("O a gagné")
+                    compteur_o+=1
+                    return 0
+                
+        if len(diagonale) > alig:
+            for i in range(len(diagonale)-1):
+                
+                if diagonale[i]=='X':
+                    cd2x+=1
+                if diagonale[i]=='O':
+                    cd2o+=1
+
+                if diagonale[i]==diagonale[i+1] and diagonale[i]=='X':
+                    cd2x+=1
+                if diagonale[i]==diagonale[i+1] and diagonale[i]=='O':
+                    cd2o+=1
+
+            if cd2x==alig:
+                print("X a gagné")
+                compteur_x+=1
+                return 0
+            elif cd2o==alig:
+                print("O a gagné")
+                compteur_o+=1
+                return 0
+            else:
+                cd2o=0
+                cd2x=0
+        
+
+    return 1
+    
+``` 
+
+
+8. Étape 8 : Le resultat du jeu
+
+```python
+
+    print("Résultat : ")
+    print("Le joueur X à gagné : "+str(compteur_x)+" fois")
+    print("Le joueur O à gagné : "+str(compteur_o)+" fois")   
+
+``` 
