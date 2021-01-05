@@ -71,9 +71,18 @@ def jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer,L):
         print('Partie '+str(k+1)+ ' :')
         grille=contruction_grille(imax,L) #construction de la grille de taille imax
         while (verification(grille,alig,imax,L)): #tant qu'il y a des cases vides
-            case_choisie=int(input('Joueur '+symb+' choisi une position dans la grille entre 1 et '+str((taille_reel_grille))+' : '))
+                
+            while True: #Cette condition permet d'afficher à l'écran que la case choisi n'est pas valide (ce n'est pas un int) et qu'il faut choisir une autre case
+                try:    
+                    case_choisie=int(input('\nJoueur '+symb+' choisi une position dans la grille entre 1 et '+str((taille_reel_grille))+' : '))
+                    break
+                except ValueError:
+                    print("Cette case n'est pas valide ! Choisi-en une autre !")
+                    continue
+
+            
             if(not(0<case_choisie<taille_reel_grille+1)):
-                print("Cette case n'est pas dans la grille ! Choisi-en une autre !")
+                print("Cette case n'est pas valide ! Choisi-en une autre !")
                 continue
 
             y=(case_choisie-1) %imax
@@ -92,8 +101,9 @@ def jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer,L):
 
 Nous avons tout d'abord une boucle for qui permet de jouer un nombre précis de parties.
 
-Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7),    
+Dans cette même fonction, nous demandons aux joueurs de saisir la case de leur choix. Ensuite pour éviter les erreurs nous vérifions que le choix est bien un ```int``` compris entre 1 et n (taille de la grille) et grâce à la méthode de try/except qu'il ne soit pas une ```ValueError``` (ex: ```string```). 
 
+Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7). 
 
 ***
 ***
