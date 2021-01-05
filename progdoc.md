@@ -13,10 +13,12 @@ Le jeu demarre grâce aux lignes de codes suivantes :
 
 ```python
 if __name__ == '__main__':
-
+    
+    input('Bienvenue dans LE MEILLEUR jeu du Morpion ! Es-tu prêt ? (Oui ou Oui ?) : ')
+    
     imax = int(input('Choisi une taille de grille : ')) 
     taille_reel_grille = imax**2 #taille 2D de la grille
-
+    L=[j for j in range(1,taille_reel_grille+1)] 
     alig=int(input('Difficulté : Choisi un nombre de symbole à aligner dans la grille : ')) 
 
     nombre_partie_a_jouer=int(input('Combien de partie voulez vous jouer ? : '))
@@ -26,20 +28,27 @@ if __name__ == '__main__':
     compteur_x=0 #Compteurs qui  permet de compter les victoires du joueurs X
     compteur_o=0 #Compteurs qui  permet de compter les victoires du joueurs O
 
-    jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer)
+    jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer,L)
 ```
 
 ***
 
 1. Étape 1 : L'initialisation du jeu
 
-L'initiation du jeu se fait à l'aide de l'utilisateur, en lui demandant la taille de la grille, le nombre de symbole à aligner ainsi que le nombre de partie à jouer : 
+L'initiation du jeu se fait d'une part à l'aide de l'utilisateur, en lui demandant la taille de la grille, le nombre de symbole à aligner ainsi que le nombre de partie à jouer. Et d'autre part, par l'initialisation d'une liste L qui contiendra les nombres de 1 à n (taille de la grille) qui permettront aux joueurs de se reperer dans la grille, des compteurs de victoirs et du premier symbole à être joué  : 
 
 ```python
 imax = int(input('Choisi une taille de grille : ')) 
 taille_reel_grille = imax**2 #taille 2D de la grille
+L=[j for j in range(1,taille_reel_grille+1)] 
 alig=int(input('Difficulté : Choisi un nombre de symbole à aligner dans la grille : ')) 
+
 nombre_partie_a_jouer=int(input('Combien de partie voulez vous jouer ? : '))
+
+symb='X' #symbole du premier joueur
+
+compteur_x=0 #Compteurs qui  permet de compter les victoires du joueurs X
+compteur_o=0 #Compteurs qui  permet de compter les victoires du joueurs O
 ```
 
 ***
@@ -50,45 +59,55 @@ Après l'initialisation, le jeu se lance grâce à la fonction ``` jeu ``` :
 
 ```python
 
-def jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer):
+def jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer,L):
     global symb
     for k in range(nombre_partie_a_jouer): #permet de jouer un certain nombre de partie
         print('Partie '+str(k+1)+ ' :')
-        grille=contruction_grille(imax) #construction de la grille de taille imax
-        while (verification(grille,alig,imax)): #tant qu'il y a des cases vides
-            case_choisie=int(input('Le joueur '+symb+' choisi une position dans la grille entre 0 et '+str((taille_reel_grille)-1)+' : '))
-            if(not(-1<case_choisie<taille_reel_grille)):
+        grille=contruction_grille(imax,L) #construction de la grille de taille imax
+        while (verification(grille,alig,imax,L)): #tant qu'il y a des cases vides
+            case_choisie=int(input('Joueur '+symb+' choisi une position dans la grille entre 1 et '+str((taille_reel_grille))+' : '))
+            if(not(0<case_choisie<taille_reel_grille+1)):
+                print("Cette case n'est pas dans la grille ! Choisi-en une autre !")
                 continue
 
-            y=case_choisie %imax
-            x=int(case_choisie/imax)
-            jouer(grille,x,y,imax,taille_reel_grille)
+            y=(case_choisie-1) %imax
+            x=int((case_choisie-1)/imax)
+            jouer(grille,x,y,imax,taille_reel_grille,L)
 
-            if not(verification_victoire(x,y,imax,alig,grille)): #permet de stopper le jeu lorsque l'un des joueur gagne
+            if not(verification_victoire(x,y,imax,alig,grille,L)): #permet de stopper le jeu lorsque l'un des joueur gagne
                 break
+                
+            
+    print("Résultat : ")
+    print("Le joueur X à gagné : "+str(compteur_x)+" fois")
+    print("Le joueur O à gagné : "+str(compteur_o)+" fois") 
 
 ```
+
 Nous avons tout d'abord une boucle for qui permet de jouer un nombre précis de parties.
 
-Ensuite, nous faisons appelle aux autres fonctions du jeu : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7),    
+Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7),    
 
 ***
 
 3. Étape 3 : La construction de la grille initiale
 
+La fonction ```construction_grille``` permet de contruire la grille du jeu initiale de maniere à être le plus lisible possible en utilisant notamment des tirets qui sépareront chaques lignes de la grille. De plus, nous avons fait le choix qu'initialement la grille allait être rempli de nombre allant de 1 à n (taille de la grille) afin que cela soit plus simple pour le choix de case des joueurs. 
+
 ```python
 
-def contruction_grille(imax): #Permet de créer la grille initiale du jeu en utilisant des tiretspour une lisibilité plus optimale
+def contruction_grille(imax,L): #Permet de créer la grille initiale du jeu en utilisant des tiretspour une lisibilité plus optimale
     grille=[] 
-    print('-----'*imax)
+    print('-----'*imax)    
     for i in range(0,imax):
         grille.append([])
 
-        for j in range(0,imax):
-    
-            grille[i].append(' ')
+        for j in range(imax):
+            grille[i].append(L[j+imax*i])
+
         print(grille[i])
         print('-----'*imax)
+
     return grille
 
 ```
@@ -96,6 +115,9 @@ def contruction_grille(imax): #Permet de créer la grille initiale du jeu en uti
 ***
 
 4. Étape 4 : La fonction ``` verification ```
+
+La fonction ``` verification ``` permet de vérifier qu'il y a toujours des emplacements libres pour des symboles à l'intérieur de la grille. Pour cela on parcours la grille et on compare chaque éléments aux éléments de la liste L (définie plus haut) si un des éléments est égale à un élément de L la grille n'est pas encore pleine 
+
 
 ```python
 
@@ -112,7 +134,10 @@ def verification(grille,alig,imax,L): # Permet de vérifier si il y a des cases 
 
 5. Étape 5 : Le joueur choisit sa case
 
+Ces prochaines lignes de codes nous permettent, à partir d'un numéro de case donné par le joueur, de définir ces coordonnées x et y par un  calcul trouvé par tâtonnement 
+
 ```python
+
 case_choisie=int(input('Joueur '+symb+' choisi une position dans la grille entre 1 et '+str((taille_reel_grille))+' : '))
 if(not(0<case_choisie<taille_reel_grille+1)):
     print("Cette case n'est pas dans la grille ! Choisi-en une autre !")
@@ -120,12 +145,14 @@ if(not(0<case_choisie<taille_reel_grille+1)):
 
 y=(case_choisie-1) %imax
 x=int((case_choisie-1)/imax)
-jouer(grille,x,y,imax,taille_reel_grille,L)
+
 ```
 
 ***
 
 6. Étape 6 : La fonction ```jouer```
+
+La fonction ```jouer``` nous permet de mettre à jour la grille en affichant à chaques étapes nous nouveaux symboles ajoutés. 
 
 ```python
 
@@ -147,6 +174,12 @@ def jouer(grille,x,y,imax,taille_reel_grille,L):
 ***
 
 7. Étape 7 : La fonction ```verification_victoire```
+
+La fonction ```verification_victoire``` permet de vérifier la grille sur ces lignes, ces colonnes ainsi que toutes ces diagonales si il a eu une victoire. Pour cela, nous créeons quatres listes de listes (ligne, colonnes, liste_diagonales1, liste_diagonales2) contenant respectivement les lignes, les colonnes et les diagonales. 
+
+Ensuite, étant donné que les listes de lignes et colonnes possèdent des listes de mêmes taille nous utilisons la même méthode qui consiste à comparer les éléments consecutifs et de comptabiliser les éléments conécutifs et de le comparer au nombre choisi par les joueurs (alig).
+
+Pour les diagonales, nous utilisons aussi cette methode mais uniquement lorsque la longueure de la diagonale est plus grande que l'alignement souhaité (exemple une diagonale de longueure 3 mais l'on souhaite uniquement aligner 2 symboles). Pour les diagonales de longueure égale à l'alignement souhaité nous utilisons la méthode des sets, qui permet de nous indiquer si un symbole n'apparait qu'une seule fois dans une liste (ex : on souhaite un alignement de 3 symboles avec des diagonales de longueure 3 : set(['X','O','1'])=3, set(['X','O','O'])=2 et set(['X','X','X']=1) ainsi il est plus aisé de retrouver les combinaisons gagnantes.  
 
 ```python
 def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a victoire de l'un des joueurs
