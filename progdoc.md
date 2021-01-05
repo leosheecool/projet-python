@@ -33,6 +33,8 @@ if __name__ == '__main__':
 
 ***
 
+
+
 1. Étape 1 : L'initialisation du jeu
 
 L'initiation du jeu se fait d'une part à l'aide de l'utilisateur, en lui demandant la taille de la grille, le nombre de symbole à aligner ainsi que le nombre de partie à jouer. Et d'autre part, par l'initialisation d'une liste L qui contiendra les nombres de 1 à n (taille de la grille) qui permettront aux joueurs de se reperer dans la grille, des compteurs de victoirs et du premier symbole à être joué  : 
@@ -52,6 +54,8 @@ compteur_o=0 #Compteurs qui  permet de compter les victoires du joueurs O
 ```
 
 ***
+
+
 
 2. Étape 2 : Le début du jeu
 
@@ -88,6 +92,8 @@ Nous avons tout d'abord une boucle for qui permet de jouer un nombre précis de 
 
 Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7),    
 
+
+
 ***
 
 3. Étape 3 : La construction de la grille initiale
@@ -112,6 +118,8 @@ def contruction_grille(imax,L): #Permet de créer la grille initiale du jeu en u
 
 ```
 
+
+
 ***
 
 4. Étape 4 : La fonction ``` verification ```
@@ -130,6 +138,8 @@ def verification(grille,alig,imax,L): # Permet de vérifier si il y a des cases 
     
 ```    
 
+
+
 ***
 
 5. Étape 5 : Le joueur choisit sa case
@@ -147,6 +157,8 @@ y=(case_choisie-1) %imax
 x=int((case_choisie-1)/imax)
 
 ```
+
+
 
 ***
 
@@ -170,6 +182,8 @@ def jouer(grille,x,y,imax,taille_reel_grille,L):
     return 1
     
 ```    
+
+
 
 ***
 
@@ -322,6 +336,8 @@ def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a
     return 1
     
 ``` 
+
+
 
 ***
 
