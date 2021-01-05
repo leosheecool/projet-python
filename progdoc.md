@@ -31,6 +31,8 @@ if __name__ == '__main__':
     jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer,L)
 ```
 
+
+
 ***
 
 
@@ -52,6 +54,8 @@ symb='X' #symbole du premier joueur
 compteur_x=0 #Compteurs qui  permet de compter les victoires du joueurs X
 compteur_o=0 #Compteurs qui  permet de compter les victoires du joueurs O
 ```
+
+
 
 ***
 
@@ -96,6 +100,8 @@ Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille 
 
 ***
 
+
+
 3. Étape 3 : La construction de la grille initiale
 
 La fonction ```construction_grille``` permet de contruire la grille du jeu initiale de maniere à être le plus lisible possible en utilisant notamment des tirets qui sépareront chaques lignes de la grille. De plus, nous avons fait le choix qu'initialement la grille allait être rempli de nombre allant de 1 à n (taille de la grille) afin que cela soit plus simple pour le choix de case des joueurs. 
@@ -122,6 +128,8 @@ def contruction_grille(imax,L): #Permet de créer la grille initiale du jeu en u
 
 ***
 
+
+
 4. Étape 4 : La fonction ``` verification ```
 
 La fonction ``` verification ``` permet de vérifier qu'il y a toujours des emplacements libres pour des symboles à l'intérieur de la grille. Pour cela on parcours la grille et on compare chaque éléments aux éléments de la liste L (définie plus haut) si un des éléments est égale à un élément de L la grille n'est pas encore pleine 
@@ -142,6 +150,8 @@ def verification(grille,alig,imax,L): # Permet de vérifier si il y a des cases 
 
 ***
 
+
+
 5. Étape 5 : Le joueur choisit sa case
 
 Ces prochaines lignes de codes nous permettent, à partir d'un numéro de case donné par le joueur, de définir ces coordonnées x et y par un  calcul trouvé par tâtonnement 
@@ -161,6 +171,8 @@ x=int((case_choisie-1)/imax)
 
 
 ***
+
+
 
 6. Étape 6 : La fonction ```jouer```
 
@@ -186,6 +198,8 @@ def jouer(grille,x,y,imax,taille_reel_grille,L):
 
 
 ***
+
+
 
 7. Étape 7 : La fonction ```verification_victoire```
 
@@ -341,7 +355,12 @@ def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a
 
 ***
 
+
+
 8. Étape 8 : Le resultat du jeu
+
+Ces dernières lignes de codes permettent à la fin de chaques parties d'afficher le resultat de partie.
+
 
 ```python
 
