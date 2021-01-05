@@ -63,6 +63,13 @@ compteur_o=0 #Compteurs qui  permet de compter les victoires du joueurs O
 
 Après l'initialisation, le jeu se lance grâce à la fonction ``` jeu ``` :
 
+La fonction ```jeu``` présente tout d'abord une boucle for qui permet de jouer un nombre précis de parties.
+
+Dans cette même fonction, nous demandons aux joueurs de saisir la case de leur choix. Ensuite pour éviter les erreurs nous vérifions que le choix est bien un ```int``` compris entre 1 et n (taille de la grille) et grâce à la méthode de try/except qu'il ne soit pas une ```ValueError``` (ex: ```string```). 
+
+Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7).
+
+
 ```python
 
 def jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer,L):
@@ -98,12 +105,7 @@ def jeu(imax,taille_reel_grille,alig,nombre_partie_a_jouer,L):
     print("Le joueur O à gagné : "+str(compteur_o)+" fois") 
 
 ```
-
-Nous avons tout d'abord une boucle for qui permet de jouer un nombre précis de parties.
-
-Dans cette même fonction, nous demandons aux joueurs de saisir la case de leur choix. Ensuite pour éviter les erreurs nous vérifions que le choix est bien un ```int``` compris entre 1 et n (taille de la grille) et grâce à la méthode de try/except qu'il ne soit pas une ```ValueError``` (ex: ```string```). 
-
-Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7). 
+ 
 
 ***
 ***
