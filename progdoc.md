@@ -32,9 +32,8 @@ if __name__ == '__main__':
 ```
 
 
-
 ***
-
+***
 
 
 1. Étape 1 : L'initialisation du jeu
@@ -56,9 +55,8 @@ compteur_o=0 #Compteurs qui  permet de compter les victoires du joueurs O
 ```
 
 
-
 ***
-
+***
 
 
 2. Étape 2 : Le début du jeu
@@ -97,9 +95,8 @@ Nous avons tout d'abord une boucle for qui permet de jouer un nombre précis de 
 Ensuite, nous faisons appelle aux autres fonctions crées : construction_grille (étape 3), verification (étape 4), jouer (étape 6) verification_victoire (étape 7),    
 
 
-
 ***
-
+***
 
 
 3. Étape 3 : La construction de la grille initiale
@@ -125,9 +122,8 @@ def contruction_grille(imax,L): #Permet de créer la grille initiale du jeu en u
 ```
 
 
-
 ***
-
+***
 
 
 4. Étape 4 : La fonction ``` verification ```
@@ -147,9 +143,8 @@ def verification(grille,alig,imax,L): # Permet de vérifier si il y a des cases 
 ```    
 
 
-
 ***
-
+***
 
 
 5. Étape 5 : Le joueur choisit sa case
@@ -169,9 +164,8 @@ x=int((case_choisie-1)/imax)
 ```
 
 
-
 ***
-
+***
 
 
 6. Étape 6 : La fonction ```jouer```
@@ -196,9 +190,8 @@ def jouer(grille,x,y,imax,taille_reel_grille,L):
 ```    
 
 
-
 ***
-
+***
 
 
 7. Étape 7 : La fonction ```verification_victoire```
@@ -352,14 +345,13 @@ def verification_victoire(x,y,imax,alig,grille,L): #vérifie et annoce si il y a
 ``` 
 
 
-
 ***
-
+***
 
 
 8. Étape 8 : Le resultat du jeu
 
-Ces dernières lignes de codes permettent à la fin de chaques parties d'afficher le resultat de partie.
+Ces dernières lignes de codes permettent d'afficher le resultat de partie à la fin de chaques parties.
 
 
 ```python
