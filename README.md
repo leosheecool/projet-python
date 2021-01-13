@@ -20,8 +20,10 @@ Une fois le jeu lancer plusieurs choix nous sont proposés :
 2. Le nombre de symboles qu'un joueur doit alignée pour remporter la partie.
 3. Le nombre de partie jouée au total avec ces deux même joueurs.
 
+Pour ces trois choix, il est impératif de choisir un nombre entier.
+
 Ensuite, la grille est affichée et le jeu commence.
-Les joueurs selectionnent les cases où ils souhaitent placer leurs symboles
+Les joueurs selectionnent les cases où ils souhaitent placer leurs symboles. Qui sont aussi des nombres entiers.
 
 
 ## Les règles du jeu
