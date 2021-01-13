@@ -21,7 +21,7 @@ git clone https://github.com/salimatoutraore/projet-python.git
 
 Lancer ensuite le code :
 ``` 
-python Morpion_definitif.py (ou python3 Morpion_definitif.py sur Linux ou Mac)
+python Le_Morpion_definitif.py (ou python3 Morpion_definitif.py sur Linux ou Mac)
 ```
 
 ## Les intéractions
