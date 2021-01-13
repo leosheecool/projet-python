@@ -14,15 +14,14 @@ Python 3.8
 
 ## Le lancement
 
-Lancer le code
-``` 
-projet_morpion_def.py
-```
-
-Cloner ensuite le projet
+Cloner le projet
 ```
 git clone https://github.com/salimatoutraore/projet-python
+```
 
+Lancer ensuite le code
+``` 
+Morpion_definitif.py
 ```
 
 ## Les intéractions
