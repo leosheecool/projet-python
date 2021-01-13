@@ -5,13 +5,25 @@
 
 ## L'installation
 
-Pour installer notre programme il suffit de télécharger le fichier projet_morpion_def.py et d'ouvrir ce dernier dans un éditeur de code, par exemple Visual Studio Code
+Environnement
+
+```
+Python 3.8
+```
 
 
 ## Le lancement
 
-Une fois l'installation du programme effectué ainsi que le programme ouvert sur l'éediteur de code, il suffit maintenent de lancer le programme dans le terminal via le bouton play. Le jeu se lance...
+Lancer le code
+``` 
+projet_morpion_def.py
+```
 
+Cloner ensuite le projet
+```
+git clone https://github.com/salimatoutraore/projet-python
+
+```
 
 ## Les intéractions
 
