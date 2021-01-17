@@ -19,9 +19,14 @@ Cloner le projet :
 git clone https://github.com/salimatoutraore/projet-python.git
 ```
 
-Lancer ensuite le code :
+Lancer ensuite le code pour le jeu Terminal :
 ``` 
 python Le_Morpion_definitif.py (ou python3 Morpion_definitif.py sur Linux ou Mac)
+```
+
+Lancer ensuite le code pour le jeu avec l'interface graphique. (Ce code n'est pas aussi finalisé que la version du terminal) :
+``` 
+python Morpion_avec_interface.py (ou python3 Morpion_avec_interface.py sur Linux ou Mac)
 ```
 
 ## Les intéractions
